@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meteorito_app/view/page/main/main_layout.dart';
+import 'package:meteorito_app/view/page/soccer/soccer_page.dart';
 
 /// Clave global para el navegador raíz.
 /// Permite controlar la navegación desde cualquier parte de la app.
@@ -25,7 +26,7 @@ CustomTransitionPage buildSlideTransitionPage(Widget child) {
 /// Define todas las rutas y sus transiciones.
 /// Usa páginas mock si las reales aún no existen.
 final appRouter = GoRouter(
-  initialLocation: '/live',
+  initialLocation: '',
   navigatorKey: rootNavigatorKey,
   routes: [
     ShellRoute(
@@ -33,8 +34,8 @@ final appRouter = GoRouter(
       routes: [
         // Ruta: En vivo
         GoRoute(
-          path: '/live',
-          pageBuilder: (context, state) => buildSlideTransitionPage(const MockPage(title: 'LivePage')),
+          path: '/soccer',
+          pageBuilder: (context, state) => buildSlideTransitionPage(const SoccerPage()),
         ),
         // Ruta: Resultados en vivo
         GoRoute(
@@ -96,7 +97,7 @@ final appRouter = GoRouter(
       ],
     ),
     // Redirección raíz
-    GoRoute(path: '/', redirect: (_, __) => '/live'),
+    GoRoute(path: '/', redirect: (_, __) => '/soccer'),
   ],
 );
 

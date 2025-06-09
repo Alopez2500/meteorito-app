@@ -25,68 +25,64 @@ class MainLayoutState extends ConsumerState<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.background,
       extendBody: true,
       extendBodyBehindAppBar: true,
       body: Padding(
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top,
-          // bottom: MediaQuery.of(context).padding.bottom + _bottomNavHeight,
           bottom: MediaQuery.of(context).padding.bottom,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // BannerContainer(AdSize.banner),
-            // ContentNotification(),
             SizedBox(height: 5),
             Expanded(child: widget.child),
           ],
         ),
       ),
-
       bottomNavigationBar: Theme(
-        data: Theme.of(
-          context,
-        ).copyWith(splashColor: Colors.black, highlightColor: AppColors.gray),
+        data: Theme.of(context).copyWith(
+          splashColor: AppColors.accent,
+          highlightColor: AppColors.accent.withOpacity(0.2),
+          canvasColor: AppColors.surface,
+        ),
         child: BottomNavigationBar(
           key: _bottomNavKey,
           iconSize: 27,
           useLegacyColorScheme: true,
-          selectedItemColor: AppColors.gray,
-          unselectedItemColor: Colors.white,
-          selectedLabelStyle: TextStyle(color: AppColors.gray),
-          // Opcional
-          unselectedLabelStyle: TextStyle(color: Colors.white),
-          // Opcional
+          selectedItemColor: AppColors.primary,
+          unselectedItemColor: AppColors.textSecondary,
+          selectedLabelStyle: TextStyle(color: AppColors.primary),
+          unselectedLabelStyle: TextStyle(color: AppColors.textSecondary),
+          backgroundColor: AppColors.surface,
           currentIndex: ref.watch(itemMenuProvider),
           onTap: (index) => _onItemTapped(index, context),
           items: [
             BottomNavigationBarItem(
-              backgroundColor: AppColors.background,
+              backgroundColor: AppColors.surface,
               icon: Icon(Icons.cell_tower),
-              label: "En vivo",
+              label: "Futbol",
             ),
             BottomNavigationBarItem(
-              backgroundColor: AppColors.gray,
+              backgroundColor: AppColors.surface,
               icon: Icon(Icons.live_tv_rounded),
+              label: "F1",
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: AppColors.surface,
+              icon: Icon(Icons.next_plan_outlined, size: 28),
               label: "TV",
             ),
             BottomNavigationBarItem(
-              backgroundColor: AppColors.gray,
-              icon: Icon(Icons.next_plan_outlined, size: 28),
-              label: "Prox. Eventos",
+              backgroundColor: AppColors.surface,
+              icon: Icon(Icons.folder_copy_outlined),
+              label: "Categorías",
             ),
             BottomNavigationBarItem(
-              backgroundColor: AppColors.gray,
-              icon: Icon(Icons.folder_copy_outlined),
-              label: "Categorias",
-            ),
-
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.gray,
-              icon: Icon(Icons.folder_copy_outlined),
-              label: "Info",
+              backgroundColor: AppColors.surface,
+              icon: Icon(Icons.info_outline),
+              label: "Preferencias",
             ),
           ],
         ),
@@ -94,10 +90,9 @@ class MainLayoutState extends ConsumerState<MainLayout> {
     );
   }
 
-  // Función para cambiar de página al hacer clic en un botón
   void _onItemTapped(int index, BuildContext context) {
     final routes = [
-      '/live',
+      '/soccer',
       '/channels_tv',
       '/next_events',
       '/categories',
@@ -108,5 +103,4 @@ class MainLayoutState extends ConsumerState<MainLayout> {
   }
 
   final itemMenuProvider = StateProvider<int>((ref) => 0);
-
 }
