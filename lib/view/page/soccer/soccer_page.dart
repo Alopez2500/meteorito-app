@@ -108,12 +108,14 @@ class SoccerPage extends StatelessWidget {
         iconTheme: const IconThemeData(color: AppColors.textPrimary),
         elevation: 0,
       ),
-        body: ListView.separated(
-          padding: EdgeInsets.zero, // Sin margen externo
-          itemCount: matches.length,
-          separatorBuilder: (_, __) => SizedBox(height: 0), // Sin espacio entre tarjetas
-          itemBuilder: (context, i) => MatchCard(data: matches[i]),
-        )
+      body: ListView.separated(
+        padding: EdgeInsets.zero,
+        // Sin margen externo
+        itemCount: matches.length,
+        separatorBuilder: (_, __) => SizedBox(height: 0),
+        // Sin espacio entre tarjetas
+        itemBuilder: (context, i) => MatchCard(data: matches[i]),
+      ),
     );
   }
 }
@@ -244,60 +246,79 @@ class MatchCard extends StatelessWidget {
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 11,
+                                fontSize: 10,
                               ),
                             ),
-                            const SizedBox(width: 3),
                             Text(
                               data.flag,
                               style: const TextStyle(fontSize: 13),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 6),
                         Row(
                           children: [
                             Expanded(
                               child: Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text(
-                                  data.home,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10,
-                                  ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 0),
+                                      child: Text(
+                                        data.home,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 2,
-                              ),
-                              decoration: BoxDecoration(
-                                color: data.borderColor,
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: const Text(
-                                'VS',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 10,
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const SizedBox(height: 6), // Baja el VS
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: data.borderColor,
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  child: const Text(
+                                    'VS',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                             Expanded(
                               child: Align(
                                 alignment: Alignment.centerRight,
-                                child: Text(
-                                  data.away,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10,
-                                  ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    const SizedBox(height: 12),
+                                    // Baja más el visitante
+                                    Text(
+                                      data.away,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
