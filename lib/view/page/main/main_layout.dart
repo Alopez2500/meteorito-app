@@ -61,27 +61,27 @@ class MainLayoutState extends ConsumerState<MainLayout> {
           items: [
             BottomNavigationBarItem(
               backgroundColor: AppColors.surface,
-              icon: Icon(Icons.cell_tower),
+              icon: Icon(Icons.sports_soccer),
               label: "Futbol",
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.surface,
-              icon: Icon(Icons.live_tv_rounded),
+              icon: Icon(Icons.sports_motorsports),
               label: "F1",
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.surface,
-              icon: Icon(Icons.next_plan_outlined, size: 28),
+              icon: Icon(Icons.live_tv),
               label: "TV",
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.surface,
-              icon: Icon(Icons.folder_copy_outlined),
+              icon: Icon(Icons.category),
               label: "Categorías",
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.surface,
-              icon: Icon(Icons.info_outline),
+              icon: Icon(Icons.settings),
               label: "Preferencias",
             ),
           ],
@@ -93,7 +93,7 @@ class MainLayoutState extends ConsumerState<MainLayout> {
   void _onItemTapped(int index, BuildContext context) {
     final routes = [
       '/soccer',
-      '/channels_tv',
+      '/f1',
       '/next_events',
       '/categories',
       '/settings',

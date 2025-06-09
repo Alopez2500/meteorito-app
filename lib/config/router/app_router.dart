@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meteorito_app/view/page/main/main_layout.dart';
+import 'package:meteorito_app/view/page/f1/f1_page_dart.dart';
 import 'package:meteorito_app/view/page/soccer/soccer_page.dart';
 
 /// Clave global para el navegador raíz.
@@ -37,6 +38,11 @@ final appRouter = GoRouter(
           path: '/soccer',
           pageBuilder: (context, state) => buildSlideTransitionPage(const SoccerPage()),
         ),
+        // Ruta: Canales de TV
+        GoRoute(
+          path: '/f1',
+          pageBuilder: (context, state) => buildSlideTransitionPage(const F1Page()),
+        ),
         // Ruta: Resultados en vivo
         GoRoute(
           path: '/live_score',
@@ -66,11 +72,7 @@ final appRouter = GoRouter(
           path: '/next_events',
           pageBuilder: (context, state) => buildSlideTransitionPage(const MockPage(title: 'UpcomingEvents')),
         ),
-        // Ruta: Canales de TV
-        GoRoute(
-          path: '/channels_tv',
-          pageBuilder: (context, state) => buildSlideTransitionPage(const MockPage(title: 'ChannelTvPage')),
-        ),
+
         // Ruta: Información / Ajustes
         GoRoute(
           path: '/settings',

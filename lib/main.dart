@@ -34,7 +34,7 @@ class MainAppState extends ConsumerState<MainApp> {
   }
 }
 
-/// Wrapper que muestra el SplashScreen unos segundos y luego el contenido real. (Cambiar despues que tengamos conecciones con firebase)
+/// Wrapper que muestra el SplashScreen unos segundos y luego el contenido real. (Cambiar )
 class SplashWrapper extends ConsumerStatefulWidget {
   final Widget child;
 

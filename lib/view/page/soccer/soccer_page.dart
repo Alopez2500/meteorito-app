@@ -99,15 +99,6 @@ class SoccerPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.surface,
-        title: const Text(
-          'Fútbol en Vivo',
-          style: TextStyle(color: AppColors.textPrimary),
-        ),
-        iconTheme: const IconThemeData(color: AppColors.textPrimary),
-        elevation: 0,
-      ),
       body: ListView.separated(
         padding: EdgeInsets.zero,
         // Sin margen externo
@@ -137,23 +128,34 @@ class MatchData {
   });
 }
 
+
+/// Widget que representa una tarjeta de partido de fútbol.
+///
+/// Muestra el estado, hora, fecha, liga, bandera y los equipos local y visitante.
+/// El diseño utiliza colores y bordes para diferenciar el estado del partido.
 class MatchCard extends StatelessWidget {
+  /// Datos del partido a mostrar en la tarjeta.
   final MatchData data;
 
+  /// Crea una tarjeta de partido con los datos proporcionados.
   const MatchCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(2), // Sin espacio externo
+      // Margen externo mínimo para separar las tarjetas.
+      padding: EdgeInsets.all(2),
       child: Container(
+        // Borde exterior con color según el estado del partido.
         decoration: BoxDecoration(
           color: data.borderColor,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
+          // Separación interna entre el borde y el contenido.
           padding: const EdgeInsets.all(2),
           child: Container(
+            // Fondo principal de la tarjeta.
             decoration: BoxDecoration(
               color: AppColors.surface,
               borderRadius: BorderRadius.circular(6),
@@ -161,10 +163,11 @@ class MatchCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Columna izquierda: Estado, hora, fecha
+                // Columna izquierda: Estado, hora y fecha del partido.
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Estado del partido (ej: EN VIVO, PROXIMO).
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -179,6 +182,7 @@ class MatchCard extends StatelessWidget {
                         ),
                       ),
                     ),
+                    // Hora del partido con icono.
                     Container(
                       padding: const EdgeInsets.only(left: 8),
                       child: Row(
@@ -199,6 +203,7 @@ class MatchCard extends StatelessWidget {
                         ],
                       ),
                     ),
+                    // Fecha del partido con icono.
                     Container(
                       padding: const EdgeInsets.only(left: 8),
                       child: Row(
@@ -222,7 +227,7 @@ class MatchCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 12),
-                // Columna derecha: Liga y equipos
+                // Columna derecha: Liga, bandera y equipos.
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -232,6 +237,7 @@ class MatchCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        // Fila superior: Liga y bandera.
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -255,8 +261,10 @@ class MatchCard extends StatelessWidget {
                             ),
                           ],
                         ),
+                        // Fila inferior: Equipos y "VS" escalonados.
                         Row(
                           children: [
+                            // Equipo local alineado a la izquierda.
                             Expanded(
                               child: Align(
                                 alignment: Alignment.centerLeft,
@@ -278,6 +286,7 @@ class MatchCard extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            // "VS" centrado y más abajo.
                             Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -302,6 +311,7 @@ class MatchCard extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            // Equipo visitante alineado a la derecha y más abajo.
                             Expanded(
                               child: Align(
                                 alignment: Alignment.centerRight,
@@ -309,7 +319,6 @@ class MatchCard extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     const SizedBox(height: 12),
-                                    // Baja más el visitante
                                     Text(
                                       data.away,
                                       style: const TextStyle(
