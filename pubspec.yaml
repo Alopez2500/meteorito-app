@@ -34,6 +34,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  #ConsumerStatefulWidget es una clase proporcionada por la librería flutter_riverpod. Permite crear widgets con estado que pueden consumir providers de Riverpod y reaccionar a sus cambios
+  flutter_riverpod: ^2.6.1
+  #initializeDateFormatting es una función de la librería intl de Dart, utilizada para inicializar la localización de formatos de fecha y hora.
+  intl: ^0.20.2
+  #CustomTransitionPage es parte de go_router y permite definir transiciones personalizadas entre páginas.
+  go_router: ^14.8.1
 
 dev_dependencies:
   flutter_test:
